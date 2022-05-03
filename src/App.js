@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import "./index.css";
+import TopBar from "./components/topbar";
+import ScoreBar from "./components/scorebar";
+import CardContainer from "./components/cardcontainer";
+import { useState } from "react";
+export default function App() {
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  function incrementScore() {
+    setCurrentScore((s) => s + 1);
+  }
+  function updateHighScore() {
+    if (currentScore > highScore) setHighScore((s) => currentScore);
+    setCurrentScore(0);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container h-screen w-screen">
+      <TopBar />;
+      <ScoreBar currentScore={currentScore} highScore={highScore} />;
+      <CardContainer
+        incrementScore={incrementScore}
+        updateHighScore={updateHighScore}
+      />
     </div>
   );
 }
-
-export default App;
