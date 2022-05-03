@@ -23,10 +23,10 @@ export default function Card({
   };
   return (
     <div
-      className="card-container w-full h-full bg-slate-200 flex flex-row justify-center items-center border-black border-solid border-4"
+      className="card-container w-full h-full bg-slate-200 flex flex-row justify-center items-center shadow-current shadow-sm hover:bg-slate-300"
       onClick={onClick}
     >
-      <p> {symbol} </p>
+      <p className="text-lg"> {symbol} </p>
     </div>
   );
 }

@@ -4,8 +4,10 @@ import { useState } from "react";
 export default function CardContainer({ incrementScore, updateHighScore }) {
   const [roundNumber, updateRoundNumber] = useState(0);
   const incrementRoundNumber = () => updateRoundNumber((n) => n + 1);
-  let symbolArray = [...Array(26).keys()];
-  symbolArray.shift();
+  let symbolArray = [];
+  for (let x = 0x2200; x < 0x2219; x++) {
+    symbolArray.push(String.fromCharCode(x));
+  }
   const cards = symbolArray.map((symbol) => (
     <Card
       symbol={symbol}
@@ -19,7 +21,7 @@ export default function CardContainer({ incrementScore, updateHighScore }) {
   shuffleArray(cards);
   return (
     <div className="flex flex-row justify-center items-start h-3/4 w-full">
-      <div className="bg-black grid grid-cols-5 grid-rows-5 h-5/6 w-1/2">
+      <div className=" grid grid-cols-5 grid-rows-5 gap-2 h-5/6 w-1/2">
         {cards}
       </div>
     </div>
